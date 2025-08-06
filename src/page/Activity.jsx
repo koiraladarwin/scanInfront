@@ -53,21 +53,7 @@ function ActivitiesPage() {
     }
   };
 
-  const fetchUsers = async () => {
-    try {
-      const res = await fetch(`${BACKENDURL}/user`, {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      });
-      const data = await res.json();
-      if (data != null) {
-        setUsers(data);
-      }
-    } catch (err) {
-      console.error("Failed to fetch users", err);
-    }
-  };
+
 
   const fetchEventInfo = async () => {
     try {
@@ -86,7 +72,6 @@ function ActivitiesPage() {
 
   useEffect(() => {
     if (loading) return;
-    fetchUsers();
     fetchAttendees();
     fetchEventInfo();
   }, [eventId, loading]);

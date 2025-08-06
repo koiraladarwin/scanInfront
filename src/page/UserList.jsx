@@ -50,6 +50,7 @@ export default function UserList({ attendees }) {
             </thead>
             <tbody>
               {attendees.map((u) => {
+                          console.log(u);
                 return (
                   <tr key={u.id}>
                     <td className="border border-gray-300 p-3">
@@ -66,7 +67,7 @@ export default function UserList({ attendees }) {
                         className="p-2 bg-orange-100 rounded-xl hover:scale-105 active:scale-95 cursor-pointer "
                         onClick={() => {
                           setShowqr(true);
-                          setAid(u.attendee_id);
+                          setAid(u.id);
                           const id = `${u.role}-${u.auto_id}`;
                           setMid(id);
                         }}

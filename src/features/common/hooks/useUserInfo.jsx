@@ -8,7 +8,7 @@ export function UserInfoProvider({ children }) {
   const [user, setUser] = useState(null);
   const [jwt, setJwt] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
@@ -17,6 +17,7 @@ export function UserInfoProvider({ children }) {
         try {
           const token = await currentUser.getIdToken();
           setJwt(token);
+          console.log("ID Token:", token);
         } catch (err) {
           console.error("Failed to get ID token:", err);
           setJwt(null);
